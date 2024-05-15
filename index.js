@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const Redis = require("ioredis");
+const cors = require("cors");
 require("dotenv").config();
 const redis = new Redis({
     host : process.env.REDIS_HOST,
@@ -8,7 +9,7 @@ const redis = new Redis({
     password : process.env.REDIS_PASS
 });
 
-
+app.use(cors());
 const {getProducts} = require("./productApi");
 
 
